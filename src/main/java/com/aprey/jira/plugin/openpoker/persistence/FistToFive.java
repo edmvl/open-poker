@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021  Andriy Preizner
+ * Copyright (C) 2022 Public Domain
  *
  * This file is a part of Open Poker jira plugin
  *
@@ -28,27 +28,25 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
-public enum TshirtSize implements EstimationGrade {
-    XS(1, "XS", false),
-    S(2, "S", false),
-    M(3, "M", false),
-    L(4, "L", false),
-    XL(5, "XL", false),
-    XXL(6, "XXL", false),
-    XXXL(7, "XXXL", false),
-    COFFEE(8, "Coffee", false),
-    QUESTION(9, "?", false);
+public enum FistToFive implements EstimationGrade {
+    FIST(1, "Fist", false),
+    ONE(2, "1", true),
+    TWO(3, "2", true),
+    THREE(4, "3", true),
+    FOUR(5, "4", true),
+    FIVE(6, "5", true);
 
     private final int id;
     private final String value;
     private final boolean applicable;
 
-    private static final Map<Integer, TshirtSize> ID_TO_INSTANCE_MAP = Stream.of(TshirtSize.values())
-                                                                             .collect(toMap(
-                                                                                     TshirtSize::getId,
-                                                                                     Function.identity()));
+    private static final Map<Integer, FistToFive> ID_TO_INSTANCE_MAP = Stream.of(FistToFive.values())
+                                                                                  .collect(toMap(
+                                                                                          FistToFive::getId,
+                                                                                          Function.identity())
+                                                                                          );
 
-    TshirtSize(int id, String value, boolean applicable) {
+    FistToFive(int id, String value, boolean applicable) {
         this.id = id;
         this.value = value;
         this.applicable = applicable;
@@ -74,6 +72,6 @@ public enum TshirtSize implements EstimationGrade {
     }
 
     public static List<EstimationGrade> getValuesList() {
-        return Stream.of(TshirtSize.values()).collect(toList());
+        return Stream.of(FistToFive.values()).collect(toList());
     }
 }

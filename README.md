@@ -5,7 +5,14 @@
     Jira plugin which adds simple and handy Planning (Scrum) Poker to the Issue View page.
 </p>
 
-[![Demo](https://img.youtube.com/vi/61iEyZg8JZw/maxresdefault.jpg)](https://www.youtube.com/watch?v=61iEyZg8JZw)
+[![Demo](https://img.youtube.com/vi/61iEyZg8JZw/maxresdefault.jpg)](https://youtu.be/x3JumyxaRho)
+
+### Donation
+Open Poker is Free Software and it's available free of charge.
+Your donation, which is purely optional, supports the devlopement.
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=5WSH9UURWWAN4&no_recurring=1&item_name=Open+Poker+plugin+support&currency_code=USD)
+
 
 ### Actions description
 
@@ -30,6 +37,8 @@
 **Linear** - Increments in a fixed value (1): 1, 2, 3,... 12
 
 **T-shirt size** - XS, S, M, L, XL, XXL, XXXL
+
+**Fist To Five** - Fist, 1, 2, 3, 4, 5
 
 
 ### Data security and privacy statement
