@@ -1,0 +1,32 @@
+<html lang="ru">
+<head>
+    <title>$i18n.getText("openpoker.configure.manage.screen.title")</title>
+    <meta name="decorator" content="atl.admin"/>
+    <meta name="admin.active.tab" content="my_item_link"/>
+    <meta name="admin.active.section" content="admin_issues_menu/configure_fields_visibility_section"/>
+</head>
+<body>
+<div class="label" style="margin-bottom: 20px">
+    <h2>$i18n.getText("config-checklistsofconnection-description")</h2>
+</div>
+
+<div class="aui-tabs horizontal-tabs">
+    <div class="tabs-pane active-pane" id="common-settings-tab">
+        <form action="/jira/secure/openpoker-config.jspa">
+            <textarea rows="10" cols="45" name="configs">$allConfigValue</textarea>
+            <div class="buttons-container form-footer">
+                <button
+                        class="aui-button aui-button-primary"
+                        id="config-save"
+                >
+                    Save options
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+</body>
+
+</html>

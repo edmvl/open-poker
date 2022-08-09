@@ -31,10 +31,11 @@ public enum EstimationScale {
     FIBONACCI("Fibonacci", EstimationUnit.FIBONACCI),
     LINEAR("Linear", EstimationUnit.LINEAR),
     T_SHIRT_SIZE("T-shirt size", EstimationUnit.T_SHIRT_SIZE),
-    FIST_TO_FIVE("Fist to Five", EstimationUnit.FIST_TO_FIVE);
+    FIST_TO_FIVE("Fist to Five", EstimationUnit.FIST_TO_FIVE),
+    CUSTOM("Custom scale", EstimationUnit.CUSTOM);
 
     private final String name;
-    private EstimationUnit estimationUnit;
+    private final EstimationUnit estimationUnit;
 
     EstimationScale(String name, EstimationUnit estimationUnit) {
         this.name = name;

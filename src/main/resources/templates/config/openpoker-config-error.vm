@@ -1,0 +1,29 @@
+<html lang="ru">
+<head>
+    <title>$i18n.getText("openpoker.configure.manage.screen.title")</title>
+    <meta name="decorator" content="atl.admin"/>
+    <meta name="admin.active.tab" content="my_item_link"/>
+    <meta name="admin.active.section" content="admin_issues_menu/configure_fields_visibility_section"/>
+</head>
+<body>
+<div class="label" style="margin-bottom: 20px">
+    <h2>ERROR</h2>
+</div>
+
+<div class="aui-tabs horizontal-tabs">
+    <strong>Custom scale is in use, please apply all started estimations</strong>
+    <form>
+        <div class="buttons-container form-footer">
+            <button
+                    class="aui-button aui-button-primary"
+                    id="config-save"
+                    formaction="/jira/secure/openpoker-config.jspa"
+            >
+                Return
+            </button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

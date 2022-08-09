@@ -22,7 +22,6 @@ package com.aprey.jira.plugin.openpoker.api;
 import com.aprey.jira.plugin.openpoker.persistence.PersistenceService;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.user.util.UserManager;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import java.util.Optional;
 import javax.inject.Inject;
@@ -31,7 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Named
-@Scanned
 @Slf4j
 public class ApplyVoteProcessor implements ActionProcessor {
 

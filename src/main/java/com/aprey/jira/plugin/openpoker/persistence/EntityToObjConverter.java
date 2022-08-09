@@ -25,7 +25,6 @@ import com.aprey.jira.plugin.openpoker.PokerSession;
 import com.aprey.jira.plugin.openpoker.UserNotFoundException;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.user.util.UserManager;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +33,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
-@Scanned
 class EntityToObjConverter {
 
     @ComponentImport

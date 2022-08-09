@@ -59,6 +59,7 @@
         <entity>com.aprey.jira.plugin.openpoker.persistence.PokerSessionEntity</entity>
         <entity>com.aprey.jira.plugin.openpoker.persistence.EstimateEntity</entity>
         <entity>com.aprey.jira.plugin.openpoker.persistence.FinalEstEntity</entity>
+        <entity>com.aprey.jira.plugin.openpoker.persistence.Config</entity>
     </ao>
     <servlet name="Poker Planning Servlet" class="com.aprey.jira.plugin.openpoker.api.PokerSessionServlet"
              key="poker-session">
@@ -68,4 +69,26 @@
     <rest key="rest" path="/open-poker" version="1.0">
         <description>Rest resource for</description>
     </rest>
+    <webwork1 key="worklog-config-webwork" name="Config webwork" class="java.lang.Object">
+        <description>Configure worklog settings</description>
+        <actions>
+            <action name="com.aprey.jira.plugin.openpoker.action.ConfigAction"
+                    alias="openpoker-config" roles-required="admin">
+                <view name="success">/templates/config/openpoker-config.vm</view>
+                <view name="error">/templates/config/openpoker-config-error.vm</view>
+            </action>
+        </actions>
+    </webwork1>
+    <component-import key="ao" interface="com.atlassian.activeobjects.external.ActiveObjects"/>
+    <component key="poker-config-service" class="com.aprey.jira.plugin.openpoker.service.PluginConfigService" public="true">
+        <interface>com.atlassian.sal.api.lifecycle.LifecycleAware</interface>
+    </component>
+    <web-section key="configure_fields_visibility_section" location="admin_issues_menu"
+                 name="Configure fields visibility section"/>
+    <web-item key="configure_fields_visibility_section_link"
+              section="admin_issues_menu/configure_fields_visibility_section" name="Configure fields visibility link"
+              weight="800">
+        <label key="openpoker.configure.manage.screen.label"/>
+        <link linkId="configure_fields_visibility_link">/secure/openpoker-config.jspa</link>
+    </web-item>
 </atlassian-plugin>

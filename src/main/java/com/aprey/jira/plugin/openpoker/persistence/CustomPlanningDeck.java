@@ -20,23 +20,19 @@
 package com.aprey.jira.plugin.openpoker.persistence;
 
 import com.aprey.jira.plugin.openpoker.Deck;
-import com.aprey.jira.plugin.openpoker.EstimationUnit;
-import com.google.common.collect.ImmutableMap;
-import javax.inject.Named;
+import com.aprey.jira.plugin.openpoker.EstimationGrade;
 
-@Named
-public class EstimationDeckService {
-    private final ImmutableMap<EstimationUnit, Deck> unitToDeckMap
-            = ImmutableMap.<EstimationUnit, Deck>builder()
-            .put(EstimationUnit.FIBONACCI, new FibonacciDeck())
-            .put(EstimationUnit.CLASSIC_PLANNING, new ClassicPlanningDeck())
-            .put(EstimationUnit.T_SHIRT_SIZE, new TshirtSizeDeck())
-            .put(EstimationUnit.LINEAR, new LinearDeck())
-            .put(EstimationUnit.FIST_TO_FIVE, new FistToFiveDeck())
-            .put(EstimationUnit.CUSTOM, new CustomPlanningDeck())
-            .build();
+import java.util.List;
 
-    public Deck getDeck(EstimationUnit estimationUnit) {
-        return unitToDeckMap.get(estimationUnit);
+public class CustomPlanningDeck implements Deck {
+
+    @Override
+    public List<EstimationGrade> getGrades() {
+        return CustomPlanning.getValuesList();
+    }
+
+    @Override
+    public EstimationGrade getGrade(int gradeId) {
+        return CustomPlanning.findById(gradeId);
     }
 }
