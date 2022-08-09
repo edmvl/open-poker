@@ -24,7 +24,6 @@ import com.aprey.jira.plugin.openpoker.UserNotFoundException;
 import com.aprey.jira.plugin.openpoker.persistence.PersistenceService;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.jira.user.util.UserManager;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,7 +37,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/session/")
-@Scanned
 public class PokerSessionResource {
 
     private final PersistenceService sessionService;

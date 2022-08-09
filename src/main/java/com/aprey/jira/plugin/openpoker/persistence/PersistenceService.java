@@ -19,15 +19,16 @@
 
 package com.aprey.jira.plugin.openpoker.persistence;
 
-import com.aprey.jira.plugin.openpoker.EstimationGrade;
-import com.aprey.jira.plugin.openpoker.EstimationUnit;
-import com.aprey.jira.plugin.openpoker.IssueServiceFacade;
-import com.aprey.jira.plugin.openpoker.PokerSession;
-import com.aprey.jira.plugin.openpoker.SessionStatus;
+import com.aprey.jira.plugin.openpoker.*;
 import com.atlassian.activeobjects.external.ActiveObjects;
 import com.atlassian.jira.user.ApplicationUser;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
+import lombok.extern.slf4j.Slf4j;
+import net.java.ao.Query;
+import org.springframework.stereotype.Service;
+import static com.google.common.collect.Lists.newArrayList;
+
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -35,26 +36,19 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.transaction.Transactional;
-import lombok.extern.slf4j.Slf4j;
 
 @Transactional
-@Scanned
-@Named
+@Service
 @Slf4j
 public class PersistenceService {
 
-    @ComponentImport
     private final ActiveObjects ao;
     private final EntityToObjConverter converter;
     private final QueryBuilderService queryBuilder;
     private final IssueServiceFacade issueServiceFacade;
     private final EstimationDeckService deckService;
 
-    @Inject
-    public PersistenceService(ActiveObjects ao, EntityToObjConverter converter,
+    public PersistenceService(@ComponentImport ActiveObjects ao, EntityToObjConverter converter,
                               QueryBuilderService queryBuilderService,
                               IssueServiceFacade issueServiceFacade,
                               EstimationDeckService estimationDeckService) {
@@ -238,5 +232,28 @@ public class PersistenceService {
         }
 
         return sessionFinder.apply(Arrays.asList(sessions));
+    }
+
+    public List<Config> getCustomPlanningConfiguration() {
+        return newArrayList(ao.find(Config.class));
+    }
+
+    public List<Config> saveCustomPlanningConfiguration(String configValues) {
+        Arrays.stream(ao.find(Config.class))
+                .forEach(ao::delete);
+        return Stream.of(configValues.split("\r")).map(customPlanning -> {
+            Config config = ao.create(Config.class);
+            config.setValue(customPlanning);
+            config.setApplicable(String.valueOf(true));
+            config.save();
+            return config;
+        }).collect(Collectors.toList());
+    }
+
+    public Boolean isCustomScaleInUse() {
+        return Arrays.stream( ao.find(
+                PokerSessionEntity.class,
+                Query.select().where("(SESSION_STATUS ='IN_PROGRESS' OR SESSION_STATUS ='FINISHED') AND UNIT_OF_MEASURE = 'CUSTOM'")
+        )).findFirst().isPresent();
     }
 }

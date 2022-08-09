@@ -22,12 +22,10 @@ package com.aprey.jira.plugin.openpoker.api;
 import com.atlassian.jira.avatar.Avatar;
 import com.atlassian.jira.avatar.AvatarService;
 import com.atlassian.jira.user.ApplicationUser;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-@Scanned
 @Named
 public class UserConverter {
 

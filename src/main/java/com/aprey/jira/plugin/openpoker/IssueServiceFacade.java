@@ -26,7 +26,6 @@ import com.atlassian.jira.issue.IssueInputParameters;
 import com.atlassian.jira.issue.IssueManager;
 import com.atlassian.jira.issue.fields.CustomField;
 import com.atlassian.jira.user.ApplicationUser;
-import com.atlassian.plugin.spring.scanner.annotation.component.Scanned;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import java.text.DecimalFormat;
 import java.util.Objects;
@@ -36,7 +35,6 @@ import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Scanned
 @Named
 public class IssueServiceFacade {
 
